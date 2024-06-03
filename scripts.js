@@ -1,27 +1,16 @@
-// scripts.js
-
-// Function to alert when the adopt button is clicked
-document.addEventListener('DOMContentLoaded', () => {
-  const adoptButtons = document.querySelectorAll('.adopt-button');
-
-  adoptButtons.forEach(button => {
-      button.addEventListener('click', () => {
-          alert('Thank you for considering adoption!');
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all adopt buttons
+    const adoptButtons = document.querySelectorAll('.adopt-button');
+  
+    // Add click event listener to each adopt button
+    adoptButtons.forEach(button => {
+      button.addEventListener('click', function(event) {
+        // Prevent default behavior (i.e., following the link)
+        event.preventDefault();
+        
+        // Redirect to the login page
+        window.location.href = 'file:///C:/Users/unnat/OneDrive/Desktop/all%20projects/webd%20project/pawsome-adoption/login.html'; // Replace '/login' with the actual URL of your login page
       });
+    });
   });
-});
-
-// Function to show alert when 'Contact' is clicked in the nav menu
-document.querySelector('nav ul li a[href="#"]').addEventListener('click', (event) => {
-  event.preventDefault();
-  alert('Contact us at: contact@pawsomeadoption.org');
-});
-
-// Function to update date and time
-function updateTime() {
-  const now = new Date();
-  const dateTimeString = now.toLocaleString();
-  document.getElementById('currentDateTime').textContent = dateTimeString;
-}
-
-setInterval(updateTime, 1000); // Update every second
+  

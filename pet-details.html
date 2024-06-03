@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Details</title>
+  <link rel="stylesheet" href="pet-details.css">
+</head>
+<body>
+  <header>
+    <h1>Pet Details</h1>
+  </header>
+  <section id="pet-details">
+    <!-- Pet details will be displayed here -->
+  </section>
+  <script>
+    // Sample pet data
+    const pets = {
+      1: { name: 'Buddy', age: '2 years', breed: 'Labrador Retriever', gender: 'Male' },
+      2: { name: 'Whiskers', age: '3 years', breed: 'Domestic Shorthair', gender: 'Female' },
+      3: { name: 'Rex', age: '1 year', breed: 'German Shepherd', gender: 'Male' },
+      4: { name: 'Mittens', age: '4 years', breed: 'Siamese', gender: 'Male' },
+      5: { name: 'Luna', age: '2 years', breed: 'Siberian Husky', gender: 'Female' },
+      6: { name: 'Fluffy', age: '5 years', breed: 'Persian', gender: 'Female' },
+      7: { name: 'Rusty', age: '3 years', breed: 'Golden Retriever', gender: 'Male' },
+      8: { name: 'Shadow', age: '2 years', breed: 'Bombay', gender: 'Male' }
+    };
+
+    // Get petId from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const petId = urlParams.get('petId');
+
+    // Function to display pet details
+    function displayPetDetails(pet) {
+      const petDetailsSection = document.getElementById('pet-details');
+      petDetailsSection.innerHTML = `
+        <h2>${pet.name}</h2>
+        <p>Age: ${pet.age}</p>
+        <p>Breed: ${pet.breed}</p>
+        <p>Gender: ${pet.gender}</p>
+        <a href="#" class="adopt-button">Confirm Adoption</a>
+      `;
+    }
+
+    // Check if petId is valid and display pet details
+    if (petId && pets[petId]) {
+      const pet = pets[petId];
+      displayPetDetails(pet);
+    } else {
+      document.getElementById('pet-details').innerHTML = '<p>Pet not found.</p>';
+    }
+  </script>
+</body>
+</html>
